@@ -124,7 +124,7 @@
 //               whitespace-nowrap
 //             "
 //           >
-//             Medico Forensic
+//             US Pharmacy
 //           </h2>
 
 //           {/* DESKTOP NAV */}
@@ -137,9 +137,10 @@
 //             <Link href="/about" className="hover:text-blue-600 transition">
 //               About
 //             </Link>
-//             <Link href="/blog" className="hover:text-cyan-400 transition">
-//   Blog
-// </Link>
+
+//             <Link href="/blog" className="hover:text-cyan-500 transition">
+//               Blog
+//             </Link>
 
 //             <Link href="/medicines" className="hover:text-blue-600 transition">
 //               Products
@@ -217,7 +218,7 @@
 //                   ref={profileRef}
 //                   className="
 //                     absolute right-0 mt-4 w-64
-//                     bg-white/80
+//                     bg-white/90
 //                     backdrop-blur-2xl
 //                     border border-white/30
 //                     rounded-3xl
@@ -228,7 +229,7 @@
 //                 >
 
 //                   {/* TOP */}
-//                   <div className="p-4 border-b border-gray-200/50 bg-gradient-to-r from-cyan-100 to-blue-300">
+//                   <div className="p-4 border-b border-gray-200/50 bg-gradient-to-r from-cyan-100 to-blue-200">
 
 //                     {user ? (
 //                       <>
@@ -253,6 +254,7 @@
 
 //                     {user ? (
 //                       <>
+//                         {/* PROFILE */}
 //                         <button
 //                           onClick={() => {
 //                             router.push("/profile");
@@ -270,9 +272,10 @@
 //                           My Profile
 //                         </button>
 
+//                         {/* ORDERS */}
 //                         <button
 //                           onClick={() => {
-//                             setCartOpen(true);
+//                             router.push("/orders");
 //                             setOpenProfile(false);
 //                           }}
 //                           className="
@@ -284,9 +287,10 @@
 //                           "
 //                         >
 //                           <Package size={18} />
-//                           My Cart
+//                           My Orders
 //                         </button>
 
+//                         {/* LOGOUT */}
 //                         <button
 //                           onClick={() => {
 //                             logout();
@@ -319,17 +323,18 @@
 //                           Login
 //                         </button>
 
-//                         <button
-//                           onClick={() => router.push("/signup")}
-//                           className="
-//                             w-full px-4 py-3 rounded-2xl
-//                             hover:bg-blue-50
-//                             transition
-//                             text-left text-sm font-medium
-//                           "
-//                         >
-//                           Signup
-//                         </button>
+//                        <Link
+//   href="/register"
+//   className="
+//     px-5 py-2 rounded-xl
+//     bg-[#162555]
+//     text-white font-semibold
+//     hover:bg-[#1f3477]
+//     transition
+//   "
+// >
+//   Register
+// </Link>
 //                       </>
 //                     )}
 
@@ -430,9 +435,14 @@
 //             >
 //               About
 //             </Link>
-//             <Link href="/blog" onClick={() => setMobileMenu(false)}>
-//   Blog
-// </Link>
+
+//             <Link
+//               href="/blog"
+//               onClick={() => setMobileMenu(false)}
+//               className="block py-3 px-4 rounded-xl hover:bg-blue-50"
+//             >
+//               Blog
+//             </Link>
 
 //             <Link
 //               href="/medicines"
@@ -454,6 +464,7 @@
 
 //               {user ? (
 //                 <>
+//                   {/* PROFILE */}
 //                   <button
 //                     onClick={() => {
 //                       router.push("/profile");
@@ -464,16 +475,18 @@
 //                     My Profile
 //                   </button>
 
+//                   {/* ORDERS */}
 //                   <button
 //                     onClick={() => {
-//                       setCartOpen(true);
+//                       router.push("/orders");
 //                       setMobileMenu(false);
 //                     }}
 //                     className="block w-full text-left py-3 px-4 rounded-xl hover:bg-blue-50"
 //                   >
-//                     My Cart
+//                     My Orders
 //                   </button>
 
+//                   {/* LOGOUT */}
 //                   <button
 //                     onClick={() => {
 //                       logout();
@@ -517,6 +530,7 @@
 //     </>
 //   );
 // }
+
 
 "use client";
 
@@ -566,6 +580,7 @@ export default function Header() {
     if (!search.trim()) return;
 
     router.push(`/medicines?search=${search}`);
+
     setShowSearch(false);
     setMobileMenu(false);
   };
@@ -573,7 +588,6 @@ export default function Header() {
   // CLICK OUTSIDE
   useEffect(() => {
     const handleClickOutside = (event) => {
-
       // PROFILE
       if (
         profileRef.current &&
@@ -624,10 +638,8 @@ export default function Header() {
           shadow-sm
         "
       >
-
         {/* MAIN HEADER */}
-        <div className="flex items-center justify-between px-4 md:px-10 h-[60px]">
-
+        <div className="flex items-center justify-between px-4 md:px-10 h-[65px]">
           {/* LOGO */}
           <h2
             onClick={() => router.push("/")}
@@ -642,12 +654,11 @@ export default function Header() {
               whitespace-nowrap
             "
           >
-            Medico Forensic
+            US Pharmacy
           </h2>
 
           {/* DESKTOP NAV */}
           <nav className="hidden md:flex items-center gap-7 text-gray-700 text-sm font-semibold">
-
             <Link href="/" className="hover:text-blue-600 transition">
               Home
             </Link>
@@ -667,12 +678,10 @@ export default function Header() {
             <Link href="/contact" className="hover:text-blue-600 transition">
               Contact
             </Link>
-
           </nav>
 
           {/* RIGHT */}
           <div className="flex items-center gap-3 sm:gap-4">
-
             {/* SEARCH */}
             <button
               ref={searchBtnRef}
@@ -717,61 +726,91 @@ export default function Header() {
             </button>
 
             {/* PROFILE */}
-            <div className="relative hidden md:block">
-
+            <div className="relative hidden md:flex items-center">
               <button
                 ref={profileBtnRef}
                 onClick={() => setOpenProfile(!openProfile)}
                 className="
-                  hover:text-blue-600
-                  transition
-                  hover:scale-110
+                  h-10 w-10
+                  flex items-center justify-center
+                  rounded-full
+                  bg-gradient-to-br from-[#162555] to-[#27408f]
+                  text-white
+                  shadow-lg
+                  hover:scale-105
+                  transition-all duration-300
                 "
               >
-                <User size={20} />
+                <User size={18} />
               </button>
 
               {openProfile && (
                 <div
                   ref={profileRef}
                   className="
-                    absolute right-0 mt-4 w-64
-                    bg-white/90
+                    absolute top-[58px] right-0
+                    w-[280px]
+                    bg-white/95
                     backdrop-blur-2xl
-                    border border-white/30
-                    rounded-3xl
-                    shadow-2xl
+                    border border-slate-200
+                    rounded-[28px]
+                    shadow-[0_20px_60px_rgba(0,0,0,0.15)]
                     overflow-hidden
+                    z-50
                     animate-in fade-in zoom-in-95 duration-200
                   "
                 >
-
                   {/* TOP */}
-                  <div className="p-4 border-b border-gray-200/50 bg-gradient-to-r from-cyan-100 to-blue-200">
+                  <div
+                    className="
+                      px-5 py-5
+                      bg-gradient-to-r
+                      from-[#162555]
+                      to-[#27408f]
+                      text-white
+                    "
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="
+                          h-14 w-14 rounded-full
+                          bg-white/20
+                          flex items-center justify-center
+                        "
+                      >
+                        <UserCircle2 size={28} />
+                      </div>
 
-                    {user ? (
-                      <>
-                        <p className="text-xs text-gray-500 mb-1">
-                          Logged in as
-                        </p>
+                      <div className="flex-1 overflow-hidden">
+                        {user ? (
+                          <>
+                            <p className="text-xs text-blue-100 mb-1">
+                              Logged in as
+                            </p>
 
-                        <p className="font-semibold text-gray-800 truncate">
-                          {user.email}
-                        </p>
-                      </>
-                    ) : (
-                      <p className="font-semibold text-gray-700">
-                        Welcome Guest
-                      </p>
-                    )}
+                            <p className="font-semibold truncate text-sm">
+                              {user?.email || user?.name}
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="font-semibold text-sm">
+                              Welcome Guest
+                            </p>
 
+                            <p className="text-xs text-blue-100 mt-1">
+                              Login to continue
+                            </p>
+                          </>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
                   {/* MENU */}
-                  <div className="p-2">
-
+                  <div className="p-3">
                     {user ? (
-                      <>
+                      <div className="space-y-2">
                         {/* PROFILE */}
                         <button
                           onClick={() => {
@@ -780,17 +819,19 @@ export default function Header() {
                           }}
                           className="
                             w-full flex items-center gap-3
-                            px-4 py-3 rounded-2xl
-                            hover:bg-blue-50
-                            transition
+                            px-4 py-3
+                            rounded-2xl
+                            hover:bg-[#EAF6FF]
+                            transition-all duration-200
                             text-sm font-medium
+                            text-[#162555]
                           "
                         >
                           <UserCircle2 size={18} />
                           My Profile
                         </button>
 
-                        {/* ORDERS */}
+                        {/* MY ORDERS */}
                         <button
                           onClick={() => {
                             router.push("/orders");
@@ -798,10 +839,12 @@ export default function Header() {
                           }}
                           className="
                             w-full flex items-center gap-3
-                            px-4 py-3 rounded-2xl
-                            hover:bg-blue-50
-                            transition
+                            px-4 py-3
+                            rounded-2xl
+                            hover:bg-[#EAF6FF]
+                            transition-all duration-200
                             text-sm font-medium
+                            text-[#162555]
                           "
                         >
                           <Package size={18} />
@@ -816,9 +859,10 @@ export default function Header() {
                           }}
                           className="
                             w-full flex items-center gap-3
-                            px-4 py-3 rounded-2xl
+                            px-4 py-3
+                            rounded-2xl
                             hover:bg-red-50
-                            transition
+                            transition-all duration-200
                             text-sm font-medium
                             text-red-500
                           "
@@ -826,35 +870,46 @@ export default function Header() {
                           <LogOut size={18} />
                           Logout
                         </button>
-                      </>
+                      </div>
                     ) : (
-                      <>
+                      <div className="space-y-2">
+                        {/* LOGIN */}
                         <button
-                          onClick={() => router.push("/login")}
+                          onClick={() => {
+                            router.push("/login");
+                            setOpenProfile(false);
+                          }}
                           className="
-                            w-full px-4 py-3 rounded-2xl
-                            hover:bg-blue-50
+                            w-full py-3 rounded-2xl
+                            border border-slate-200
+                            hover:bg-slate-50
                             transition
-                            text-left text-sm font-medium
+                            text-sm font-semibold
+                            text-[#162555]
                           "
                         >
                           Login
                         </button>
 
+                        {/* REGISTER */}
                         <button
-                          onClick={() => router.push("/signup")}
+                          onClick={() => {
+                            router.push("/register");
+                            setOpenProfile(false);
+                          }}
                           className="
-                            w-full px-4 py-3 rounded-2xl
-                            hover:bg-blue-50
+                            w-full py-3 rounded-2xl
+                            bg-[#162555]
+                            hover:bg-[#1f3477]
+                            text-white
                             transition
-                            text-left text-sm font-medium
+                            text-sm font-semibold
                           "
                         >
-                          Signup
+                          Register
                         </button>
-                      </>
+                      </div>
                     )}
-
                   </div>
                 </div>
               )}
@@ -868,7 +923,6 @@ export default function Header() {
             >
               {mobileMenu ? <X size={24} /> : <Menu size={24} />}
             </button>
-
           </div>
         </div>
 
@@ -891,7 +945,6 @@ export default function Header() {
                 shadow-2xl
               "
             >
-
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -917,7 +970,6 @@ export default function Header() {
               >
                 Search
               </button>
-
             </form>
           </div>
         )}
@@ -936,7 +988,6 @@ export default function Header() {
               animate-in slide-in-from-top-2 duration-200
             "
           >
-
             <Link
               href="/"
               onClick={() => setMobileMenu(false)}
@@ -978,10 +1029,8 @@ export default function Header() {
             </Link>
 
             <div className="border-t pt-3 mt-3">
-
               {user ? (
                 <>
-                  {/* PROFILE */}
                   <button
                     onClick={() => {
                       router.push("/profile");
@@ -992,7 +1041,6 @@ export default function Header() {
                     My Profile
                   </button>
 
-                  {/* ORDERS */}
                   <button
                     onClick={() => {
                       router.push("/orders");
@@ -1003,7 +1051,6 @@ export default function Header() {
                     My Orders
                   </button>
 
-                  {/* LOGOUT */}
                   <button
                     onClick={() => {
                       logout();
@@ -1024,23 +1071,20 @@ export default function Header() {
                   </button>
 
                   <button
-                    onClick={() => router.push("/signup")}
+                    onClick={() => router.push("/register")}
                     className="block w-full text-left py-3 px-4 rounded-xl hover:bg-blue-50"
                   >
-                    Signup
+                    Register
                   </button>
                 </>
               )}
-
             </div>
-
           </div>
         )}
-
       </header>
 
       {/* OFFSET */}
-      <div className="h-[60px]" />
+      <div className="h-[65px]" />
 
       {/* CART DRAWER */}
       <CartDrawer open={cartOpen} setOpen={setCartOpen} />

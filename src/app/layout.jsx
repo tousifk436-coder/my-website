@@ -38,6 +38,9 @@
 //   );
 // }
 import "./globals.css";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 import { Toaster } from "react-hot-toast";
 

@@ -90,18 +90,7 @@ export default function OrdersPage() {
       {/* HEADER */}
       <div className="max-w-7xl mx-auto mb-10">
 
-        <button
-          onClick={() => router.back()}
-          className="
-            flex items-center gap-2
-            text-[#162555]
-            hover:text-cyan-600
-            transition mb-6
-          "
-        >
-          <ArrowLeft size={18} />
-          Back
-        </button>
+       
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
 

@@ -443,24 +443,7 @@ export default function Hero({ search, setSearch }) {
           <div>
 
             {/* TOP BADGE */}
-            <div
-              className="
-                inline-flex items-center gap-2
-                bg-white/5
-                border border-white/10
-                backdrop-blur-xl
-                px-5 py-2.5
-                rounded-full
-                shadow-lg
-                mb-6
-              "
-            >
-              <Sparkles size={15} className="text-cyan-400" />
-
-              <span className="text-sm text-gray-200 font-medium">
-                Trusted Smart Medicine Search Platform
-              </span>
-            </div>
+           
 
             {/* HEADING */}
             <h1
@@ -518,7 +501,7 @@ export default function Hero({ search, setSearch }) {
                   flex flex-col sm:flex-row
                   items-stretch sm:items-center
                   gap-3
-                  p-3
+                  p-2
                   rounded-[26px]
                   border
                   transition-all duration-300

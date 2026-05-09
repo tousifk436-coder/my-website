@@ -278,7 +278,7 @@ export default function ContactPage() {
           {/* HOTLINE */}
           <div
             className="
-              bg-white/80
+              bg-[#C6E9FF]
               backdrop-blur-2xl
               border border-slate-200
               rounded-3xl
@@ -305,7 +305,7 @@ export default function ContactPage() {
           {/* EMAIL */}
           <div
             className="
-              bg-white/80
+              bg-[#C6E9FF]
               backdrop-blur-2xl
               border border-slate-200
               rounded-3xl
@@ -332,7 +332,7 @@ export default function ContactPage() {
           {/* LOCATION */}
           <div
             className="
-              bg-white/80
+              bg-[#C6E9FF]
               backdrop-blur-2xl
               border border-slate-200
               rounded-3xl
@@ -362,7 +362,7 @@ export default function ContactPage() {
         <form
           onSubmit={handleSubmit}
           className="
-            bg-white/80
+            bg-[#C6E9FF]
             backdrop-blur-2xl
             border border-slate-200
             rounded-3xl

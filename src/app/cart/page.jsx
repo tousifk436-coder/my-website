@@ -131,20 +131,7 @@ export default function CartPage() {
         </div>
       )}
 
-      <div className="flex justify-center mt-8">
-  <button
-    onClick={() => router.push("/")}
-    className="group relative px-8 py-3 rounded-full bg-blue-600 text-white font-medium shadow-lg transition-all duration-300 hover:bg-blue-700 hover:shadow-2xl hover:scale-105 active:scale-95"
-  >
-    {/* glow effect */}
-    <span className="absolute inset-0 rounded-full bg-blue-400 opacity-0 group-hover:opacity-30 blur-xl transition"></span>
-
-    {/* text */}
-    <span className="relative flex items-center gap-2">
-      ← Back to Home
-    </span>
-  </button>
-</div>
+      
       
     </div>
   );

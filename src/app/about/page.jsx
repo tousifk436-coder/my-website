@@ -199,7 +199,7 @@ export default function AboutPage() {
         <div className="space-y-6">
 
           {/* ABOUT COMPANY */}
-          <div className="p-6 rounded-3xl border border-[#162555]/10 bg-white/80 backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
+          <div className="p-6 rounded-3xl border border-[#162555]/10  bg-[#C6E9FF] backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
 
             <div className="flex items-center gap-3 text-cyan-600 mb-3">
               <Building2 />
@@ -217,7 +217,7 @@ export default function AboutPage() {
           </div>
 
           {/* MISSION */}
-          <div className="p-6 rounded-3xl border border-[#162555]/10 bg-white/80 backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
+          <div className="p-6 rounded-3xl border border-[#162555]/10  bg-[#C6E9FF] backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
 
             <div className="flex items-center gap-3 text-cyan-600 mb-3">
               <Target />
@@ -235,7 +235,7 @@ export default function AboutPage() {
           </div>
 
           {/* WHY CHOOSE US */}
-          <div className="p-6 rounded-3xl border border-[#162555]/10 bg-white/80 backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
+          <div className="p-6 rounded-3xl border border-[#162555]/10  bg-[#C6E9FF] backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
 
             <div className="flex items-center gap-3 text-cyan-600 mb-3">
               <Users />
@@ -259,7 +259,7 @@ export default function AboutPage() {
         <div className="space-y-6">
 
           {/* GENUINE */}
-          <div className="p-6 rounded-3xl border border-[#162555]/10 bg-white/80 backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
+          <div className="p-6 rounded-3xl border border-[#162555]/10  bg-[#C6E9FF] backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
 
             <div className="flex items-center gap-3 text-cyan-600 mb-3">
               <BadgeCheck />
@@ -276,7 +276,7 @@ export default function AboutPage() {
           </div>
 
           {/* FAST DELIVERY */}
-          <div className="p-6 rounded-3xl border border-[#162555]/10 bg-white/80 backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
+          <div className="p-6 rounded-3xl border border-[#162555]/10  bg-[#C6E9FF] backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
 
             <div className="flex items-center gap-3 text-cyan-600 mb-3">
               <Truck />
@@ -293,7 +293,7 @@ export default function AboutPage() {
           </div>
 
           {/* SAFETY */}
-          <div className="p-6 rounded-3xl border border-cyan-200 bg-gradient-to-r from-cyan-50 to-white backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
+          <div className="p-6 rounded-3xl border border-cyan-200  bg-[#C6E9FF] backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
 
             <div className="flex items-center gap-3 text-cyan-600 mb-3">
               <ShieldCheck />

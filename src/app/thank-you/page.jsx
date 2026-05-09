@@ -16,7 +16,7 @@ export default function ThankYouPage() {
     <div className="min-h-screen bg-white text-black flex items-center justify-center px-4 py-10 relative overflow-hidden">
 
       {/* LIGHT BACKGROUND */}
-      <div className="absolute inset-0 bg-[#f8fbff]" />
+      <div className="absolute inset-0 bg-[#C6E9FF]" />
 
       {/* LIGHT GLOW */}
       <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-cyan-100 rounded-full blur-3xl opacity-70" />
@@ -30,7 +30,7 @@ export default function ThankYouPage() {
           z-10
           w-full
           max-w-2xl
-          bg-white
+          bg-[#C6E9FF]
           border border-slate-200
           rounded-[40px]
           shadow-[0_10px_60px_rgba(0,0,0,0.08)]
@@ -79,7 +79,7 @@ export default function ThankYouPage() {
           {/* CARD 1 */}
           <div
             className="
-              bg-[#f8fbff]
+              bg-[#C6E9FF]
               border border-slate-200
               rounded-3xl
               p-5
@@ -112,7 +112,7 @@ export default function ThankYouPage() {
           {/* CARD 2 */}
           <div
             className="
-              bg-[#f8fbff]
+              bg-[#C6E9FF]
               border border-slate-200
               rounded-3xl
               p-5

@@ -1,234 +1,431 @@
+// // "use client";
+
+// // import { useMedicines } from "@/context/MedicineContext";
+// // import Link from "next/link";
+
+// // export default function BlogPage() {
+// //   const { medicines } = useMedicines();
+
+// //   return (
+// //     <div className="min-h-screen bg-gradient-to-b from-white via-slate-100 to-[#e9efff] px-4 py-10">
+
+// //       {/* HEADER */}
+// //       <div className="max-w-6xl mx-auto mb-10">
+// //         <h1 className="text-3xl font-bold text-[#162555]">
+// //           Medicine Blog
+// //         </h1>
+// //         <p className="text-slate-500 text-sm mt-1">
+// //           Explore detailed information of all medicines
+// //         </p>
+// //       </div>
+
+// //       {/* BLOG FEED */}
+// //       <div className="max-w-4xl mx-auto space-y-10">
+
+// //         {medicines.map((med) => (
+// //           <div
+// //             key={med.id}
+// //             className="
+// //               bg-[#E7F4FC]
+// //               border border-slate-200
+// //               rounded-3xl
+// //               shadow-md
+// //               overflow-hidden
+// //             "
+// //           >
+
+// //             {/* IMAGE */}
+// //             <img
+// //               src={med.image}
+// //               className="w-full h-64 object-cover"
+// //               alt={med.name}
+// //             />
+
+// //             {/* CONTENT */}
+// //             <div className="p-6">
+
+// //               {/* TITLE */}
+// //               <h2 className="text-2xl font-bold text-[#162555] mb-2">
+// //                 {med.name}
+// //               </h2>
+
+// //               {/* DESCRIPTION */}
+// //               <p className="text-slate-600 mb-4">
+// //                 {med.description ||
+// //                   "Premium pharmaceutical-grade medicine used for treatment and care."}
+// //               </p>
+
+// //               {/* PRICE */}
+// //               <div className="flex items-center gap-3 mb-4">
+
+// //                 {med.marketPrice && (
+// //                   <span className="text-slate-400 line-through">
+// //                     ₹{med.marketPrice}
+// //                   </span>
+// //                 )}
+
+// //                 <span className="text-cyan-600 font-bold text-xl">
+// //                   ₹{med.price}
+// //                 </span>
+
+// //               </div>
+
+// //               {/* CTA */}
+// //               <Link href={`/medicines/${med.id}`}>
+// //                 <button className="px-5 py-2 bg-[#162555] text-white rounded-xl hover:bg-[#1f3477] transition">
+// //                   View Full Details
+// //                 </button>
+// //               </Link>
+
+// //             </div>
+
+// //           </div>
+// //         ))}
+
+// //       </div>
+
+// //     </div>
+// //   );
+// // }
+
 // "use client";
 
-// import Link from "next/link";
 // import { useMedicines } from "@/context/MedicineContext";
-// import {
-//   FileText,
-//   ArrowRight,
-//   ShieldCheck,
-// } from "lucide-react";
+// import { useCart } from "@/context/CartContext";
+// import { useState } from "react";
+// import { useRouter } from "next/navigation";
+// import { toast } from "react-hot-toast";
 
 // export default function BlogPage() {
 //   const { medicines } = useMedicines();
+//   const { addToCart } = useCart();
+//   const router = useRouter();
+
+//   const handleAddToCart = (med) => {
+//     addToCart({ ...med, qty: 1 });
+//     toast.success(`${med.name} added to cart`);
+//   };
 
 //   return (
-//     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white px-6 py-10">
+//     <div className="min-h-screen bg-gradient-to-b from-white via-slate-100 to-[#e9efff] px-4 py-10">
 
-//       {/* HERO */}
-//       <div className="max-w-7xl mx-auto mb-12">
-
-//         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm mb-5">
-//           <ShieldCheck size={16} />
-//           Medical Intelligence Articles
-//         </div>
-
-//         <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-//           Medico Forensic Blog
+//       {/* HEADER */}
+//       <div className="max-w-6xl mx-auto mb-10">
+//         <h1 className="text-3xl font-bold text-[#162555]">
+//           Medicine Blog Feed
 //         </h1>
-
-//         <p className="text-slate-400 mt-4 max-w-2xl">
-//           Explore detailed medicine information, usage guidance,
-//           dosage instructions, and forensic pharmaceutical insights.
+//         <p className="text-slate-500 text-sm">
+//           All medicine details in one continuous view
 //         </p>
 //       </div>
 
-//       {/* BLOG GRID */}
-//       <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+//       {/* FEED */}
+//       <div className="space-y-10 max-w-6xl mx-auto">
 
-//         {medicines.map((med) => (
-//           <Link key={med.id} href={`/blog/${med.id}`}>
+//         {medicines.map((medicine, index) => (
+//           <div
+//             key={index}
+//             className="
+//               relative
+//               grid lg:grid-cols-2 gap-8
+//               bg-[#E7F4FC]
+//               border border-white/70
+//               rounded-[2rem]
+//               p-6
+//               shadow-xl
+//             "
+//           >
 
-//             <div
-//               className="
-//                 group
-//                 bg-slate-900/60
-//                 border border-slate-800
-//                 rounded-3xl
-//                 overflow-hidden
-//                 hover:border-cyan-500/40
-//                 hover:shadow-cyan-500/10
-//                 hover:shadow-2xl
-//                 transition-all duration-300
-//                 hover:-translate-y-2
-//               "
-//             >
+//             {/* LEFT IMAGE */}
+//             <div className="bg-white rounded-3xl p-4 flex justify-center border border-slate-200 shadow-sm">
 
-//               {/* IMAGE */}
-//               <div className="h-56 overflow-hidden">
-//                 <img
-//                   src={med.image}
-//                   alt={med.name}
-//                   className="
-//                     w-full h-full object-cover
-//                     group-hover:scale-110
-//                     transition duration-500
-//                   "
-//                 />
-//               </div>
+//               <img
+//                 src={medicine.image}
+//                 alt={medicine.name}
+//                 className="h-[380px] w-full object-contain rounded-2xl bg-white"
+//               />
 
-//               {/* CONTENT */}
-//               <div className="p-5">
-
-//                 <div className="flex items-center gap-2 text-cyan-400 text-sm mb-3">
-//                   <FileText size={16} />
-//                   Medicine Research
-//                 </div>
-
-//                 <h2 className="text-xl font-bold line-clamp-1">
-//                   {med.name}
-//                 </h2>
-
-//                 <p className="text-slate-400 text-sm mt-3 line-clamp-3">
-//                   {med.description ||
-//                     "Detailed pharmaceutical analysis and medicine insights."}
-//                 </p>
-
-//                 <div className="flex items-center gap-2 mt-5 text-cyan-400 font-medium">
-//                   Read Article
-//                   <ArrowRight
-//                     size={16}
-//                     className="group-hover:translate-x-1 transition"
-//                   />
-//                 </div>
-
-//               </div>
 //             </div>
 
-//           </Link>
+//             {/* RIGHT CONTENT */}
+//             <div className="flex flex-col justify-center">
+
+//               {/* TITLE */}
+//               <h1 className="text-3xl font-extrabold mb-3 text-[#162555]">
+//                 {medicine.name}
+//               </h1>
+
+//               {/* DESCRIPTION */}
+//               <p className="text-slate-600 leading-relaxed mb-5">
+//                 {medicine.description ||
+//                   "Premium pharmaceutical-grade formulation used in clinical systems."}
+//               </p>
+
+//               {/* PRICE */}
+//               <div className="flex items-center gap-3 mb-6">
+
+//                 {medicine.marketPrice && (
+//                   <span className="text-slate-400 line-through text-lg">
+//                     ₹{medicine.marketPrice}
+//                   </span>
+//                 )}
+
+//                 <span className="text-3xl font-bold text-cyan-600">
+//                   ₹{medicine.price}
+//                 </span>
+
+//               </div>
+
+//               {/* QUANTITY FIXED (STATIC 1 for blog feed) */}
+//               <div className="flex items-center gap-4 mb-7">
+
+//                 <span className="text-sm text-slate-500">
+//                   Quantity: 1
+//                 </span>
+
+//               </div>
+
+//               {/* ACTIONS */}
+//               <div className="flex flex-wrap gap-4">
+
+//                 {/* ADD TO CART */}
+//                 <button
+//                   onClick={() => handleAddToCart(medicine)}
+//                   className="
+//                     px-6 py-3 rounded-2xl font-semibold
+//                     bg-[#162555] hover:bg-[#1f3477]
+//                     text-white transition-all duration-300
+//                   "
+//                 >
+//                   Add to Cart
+//                 </button>
+
+//                 {/* BUY NOW */}
+//                 <button
+//                   onClick={() =>
+//                     router.push(
+//                       `/checkout?name=${encodeURIComponent(
+//                         medicine.name
+//                       )}&price=${medicine.price}&id=${medicine.id}&qty=1`
+//                     )
+//                   }
+//                   className="
+//                     px-6 py-3 rounded-2xl
+//                     bg-cyan-500 hover:bg-cyan-400
+//                     text-white font-semibold
+//                     transition-all duration-300
+//                   "
+//                 >
+//                   Buy Now
+//                 </button>
+
+//               </div>
+
+//             </div>
+//           </div>
 //         ))}
 
 //       </div>
 //     </div>
 //   );
 // }
-
 "use client";
 
-import Link from "next/link";
 import { useMedicines } from "@/context/MedicineContext";
-import {
-  FileText,
-  ArrowRight,
-  ShieldCheck,
-} from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export default function BlogPage() {
   const { medicines } = useMedicines();
+  const { addToCart } = useCart();
+  const router = useRouter();
+
+  // local state per card will be handled via index map
+  const [qtyMap, setQtyMap] = useState({});
+  const [imgMap, setImgMap] = useState({});
+
+  const handleQtyChange = (id, type) => {
+    setQtyMap((prev) => {
+      const current = prev[id] || 1;
+      return {
+        ...prev,
+        [id]:
+          type === "inc"
+            ? current + 1
+            : Math.max(1, current - 1),
+      };
+    });
+  };
+
+  const handleAddToCart = (medicine, qty) => {
+    addToCart({ ...medicine, qty });
+    toast.success(`${medicine.name} added to cart`);
+  };
+
+  const handleImgChange = (id, index) => {
+    setImgMap((prev) => ({
+      ...prev,
+      [id]: index,
+    }));
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-slate-100 to-[#e8eefc] text-[rgb(21,35,82)] px-6 py-10 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white via-slate-100 to-[#e9efff] px-4 py-10">
 
-      {/* FORENSIC BACKGROUND EFFECTS */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      {/* HEADER */}
+      
 
-        <div className="absolute top-20 left-[-100px] w-[300px] h-[300px] bg-cyan-400/10 rounded-full blur-3xl"></div>
+      {/* FEED */}
+      <div className="space-y-12 max-w-6xl mx-auto">
 
-        <div className="absolute bottom-10 right-[-120px] w-[350px] h-[350px] bg-blue-500/10 rounded-full blur-3xl"></div>
+        {medicines.map((medicine) => {
 
-      </div>
+          const images = medicine.images?.length
+            ? medicine.images
+            : [medicine.image];
 
-      {/* HERO */}
-      <div className="relative max-w-7xl mx-auto mb-14">
+          const activeImg = imgMap[medicine.id] || 0;
+          const qty = qtyMap[medicine.id] || 1;
 
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-700 text-sm mb-5 backdrop-blur-xl">
-          <ShieldCheck size={16} />
-          Medical Intelligence Articles
-        </div>
-
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-          Medico Forensic Blog
-        </h1>
-
-        <p className="text-slate-600 mt-4 max-w-2xl leading-relaxed">
-          Explore detailed medicine information, dosage instructions,
-          pharmaceutical intelligence, and verified healthcare insights
-          through our forensic-grade medical articles.
-        </p>
-      </div>
-
-      {/* BLOG GRID */}
-      <div className="relative max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        {medicines.map((med) => (
-          <Link key={med.id} href={`/blog/${med.id}`}>
-
+          return (
             <div
+              key={medicine.id}
               className="
-                group
-                bg-white/80
-                border border-white/60
-                rounded-3xl
-                overflow-hidden
-                backdrop-blur-2xl
-                shadow-lg
-                hover:shadow-2xl
-                hover:shadow-cyan-500/10
-                transition-all duration-300
-                hover:-translate-y-2
+                grid lg:grid-cols-2 gap-8
+                bg-[#C6E9FF]
+                border border-white/70
+                rounded-[2rem]
+                p-6
+                shadow-xl
               "
             >
 
-              {/* IMAGE */}
-              <div className="h-56 overflow-hidden relative">
+              {/* LEFT IMAGE SECTION */}
+              <div>
 
-                <img
-                  src={med.image}
-                  alt={med.name}
-                  className="
-                    w-full h-full object-cover
-                    group-hover:scale-110
-                    transition duration-700
-                  "
-                />
+                {/* MAIN IMAGE */}
+                <div className="bg-white rounded-3xl p-4 flex justify-center border border-slate-200 shadow-sm">
 
-                {/* IMAGE OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  <img
+                    src={images[activeImg]}
+                    alt={medicine.name}
+                    className="h-[420px] w-full object-contain rounded-2xl bg-white"
+                  />
+
+                </div>
+
+                {/* THUMBNAILS */}
+                <div className="flex gap-3 mt-4 overflow-x-auto pb-2">
+
+                  {images.map((img, idx) => (
+                    <img
+                      key={idx}
+                      src={img}
+                      onClick={() => handleImgChange(medicine.id, idx)}
+                      className={`
+                        h-20 w-20 object-cover rounded-xl cursor-pointer border-2 transition
+                        ${
+                          activeImg === idx
+                            ? "border-cyan-500 scale-105"
+                            : "border-slate-200 opacity-70 hover:opacity-100"
+                        }
+                      `}
+                    />
+                  ))}
+
+                </div>
 
               </div>
 
-              {/* CONTENT */}
-              <div className="p-5">
-
-                {/* BADGE */}
-                <div className="flex items-center gap-2 text-cyan-700 text-sm font-medium mb-3">
-                  <FileText size={16} />
-                  Medicine Research
-                </div>
+              {/* RIGHT CONTENT */}
+              <div className="flex flex-col justify-center">
 
                 {/* TITLE */}
-                <h2 className="text-xl font-bold line-clamp-1 text-[rgb(21,35,82)]">
-                  {med.name}
-                </h2>
+                <h1 className="text-4xl font-extrabold mb-3 text-[#162555]">
+                  {medicine.name}
+                </h1>
 
                 {/* DESCRIPTION */}
-                <p className="text-slate-600 text-sm mt-3 line-clamp-3 leading-relaxed">
-                  {med.description ||
-                    "Detailed pharmaceutical analysis and medicine insights."}
+                <p className="text-slate-600 leading-relaxed mb-5">
+                  {medicine.description}
                 </p>
 
-                {/* FOOTER */}
-                <div className="flex items-center justify-between mt-6">
+                {/* PRICE */}
+                <div className="flex items-center gap-3 mb-6">
 
-                  <div className="text-cyan-700 font-semibold flex items-center gap-2">
-                    Read Article
+                  {medicine.marketPrice && (
+                    <span className="text-slate-400 line-through text-lg">
+                      ₹{medicine.marketPrice}
+                    </span>
+                  )}
 
-                    <ArrowRight
-                      size={16}
-                      className="group-hover:translate-x-1 transition"
-                    />
-                  </div>
+                  <span className="text-4xl font-bold text-cyan-600">
+                    ₹{medicine.price}
+                  </span>
 
-                  <div className="text-xs px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-700 border border-cyan-500/20">
-                    Verified
-                  </div>
+                </div>
+
+                {/* QUANTITY */}
+                <div className="flex items-center gap-4 mb-7">
+
+                  <button
+                    onClick={() => handleQtyChange(medicine.id, "dec")}
+                    className="h-10 w-10 rounded-xl bg-[#162555] text-white hover:scale-105 transition"
+                  >
+                    -
+                  </button>
+
+                  <span className="text-lg font-bold">{qty}</span>
+
+                  <button
+                    onClick={() => handleQtyChange(medicine.id, "inc")}
+                    className="h-10 w-10 rounded-xl bg-[#162555] text-white hover:scale-105 transition"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+                {/* ACTIONS */}
+                <div className="flex flex-wrap gap-4">
+
+                  <button
+                    onClick={() => handleAddToCart(medicine, qty)}
+                    className="
+                      px-6 py-3 rounded-2xl font-semibold
+                      bg-[#162555] hover:bg-[#1f3477]
+                      text-white transition
+                    "
+                  >
+                    Add to Cart
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      router.push(
+                        `/checkout?name=${encodeURIComponent(
+                          medicine.name
+                        )}&price=${medicine.price}&id=${medicine.id}&qty=${qty}`
+                      )
+                    }
+                    className="
+                      px-6 py-3 rounded-2xl
+                      bg-cyan-500 hover:bg-cyan-400
+                      text-white font-semibold
+                      transition
+                    "
+                  >
+                    Buy Now
+                  </button>
 
                 </div>
 
               </div>
             </div>
-
-          </Link>
-        ))}
+          );
+        })}
 
       </div>
     </div>

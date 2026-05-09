@@ -259,7 +259,7 @@ export default function MedicineCard({ med }) {
         </div>
 
         {/* CONTENT */}
-        <div className="p-5 bg-gradient-to-b from-white to-slate-50">
+        <div className="p-5 bg-[#C6E9FF]">
 
           
 
@@ -289,11 +289,11 @@ export default function MedicineCard({ med }) {
           {/* PRICE */}
           <div className="mt-5 flex items-end gap-3">
 
-            <p className="text-2xl text-slate-400 line-through">
+            <p className="text-xl text-slate-400 line-through">
               ₹{Math.round(med.price * 1.3)}
             </p>
 
-            <p className="text-2xl font-extrabold text-green-600">
+            <p className="text-xl font-bold text-green-600">
               ₹{med.price}
             </p>
 

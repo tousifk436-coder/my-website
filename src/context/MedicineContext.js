@@ -13,7 +13,7 @@ export const MedicineProvider = ({ children }) => {
         id: 1,
         name: "Paracetamol",
         price: 50,
-        description: "Used to treat fever and mild pain.",
+        description: "Used to treat fever and mild pain .",
         image: "https://images.unsplash.com/photo-1580281657527-47bb6c2d1b91?w=400",
       },
       {

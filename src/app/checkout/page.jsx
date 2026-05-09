@@ -736,7 +736,7 @@ export default function CheckoutPage() {
         <form
           onSubmit={handleOrder}
           className="
-            bg-white/90
+            bg-[#C6E9FF]
             backdrop-blur-xl
             border border-slate-200
             rounded-[2.5rem]
@@ -967,7 +967,7 @@ export default function CheckoutPage() {
         {/* RIGHT SUMMARY */}
         <div
           className="
-            bg-white/90
+            bg-[#C6E9FF]
             backdrop-blur-xl
             border border-slate-200
             rounded-[2.5rem]
